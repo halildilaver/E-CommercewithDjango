@@ -1,0 +1,50 @@
+{% extends "homebase.html" %}
+
+{% block title %}Blank Sayfası{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <!-- Start Bradcaump area -->
+    <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/2.jpg' %}) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="bradcaump__inner text-center">
+                            <h2 class="bradcaump-title">Anket Sayfası</h2>
+                            <nav class="bradcaump-inner">
+                                <a class="breadcrumb-item" href="index.html">Home</a>
+                                <span class="brd-separetor">/</span>
+                                <span class="breadcrumb-item active">Anket Sayfası</span>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Bradcaump area -->
+    <!-- cart-main-area start -->
+    <div class="cart-main-area ptb--120 bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    Anket Soruları
+                <br>
+                    {% if latest_question_list %}
+                        <ul>
+                            {% for question in latest_question_list %}
+                                <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No polls are available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cart-main-area end -->
+
+{% endblock %}
